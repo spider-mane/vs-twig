@@ -1,0 +1,22 @@
+{
+  "formatOptions": [
+    "printWidth",
+    "tabWidth",
+    "useTabs",
+    "semi",
+    "singleQuote",
+    "quoteProps",
+    "jsxSingleQuote",
+    "trailingComma",
+    "bracketSpacing",
+    "jsxBracketSameLine",
+    "arrowParens",
+    "rangeStart",
+    "rangeEnd",
+    "requirePragma",
+    "insertPragma",
+    "proseWrap",
+    "htmlWhitespaceSensitivity",
+    "endOfLine"
+  ]
+}

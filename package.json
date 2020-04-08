@@ -1,0 +1,162 @@
+{
+  "name": "vs-twig",
+  "displayName": "vsTwig",
+  "description": "Snippets, Syntax Highlighting, Hover, and Formatting for Twig",
+  "version": "0.1.0",
+  "publisher": "spider-mane",
+  "license": "MIT",
+  "author": {
+    "name": "Chris Williams",
+    "email": "spider.mane.web@gmail.com",
+    "url": "https://webtheorystudio.com"
+  },
+  "homepage": "https://github.com/spider-mane/vs-twig",
+  "bugs": {
+    "url": "https://github.com/spider-mane/vs-twig/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spider-mane/vs-twig.git"
+  },
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "categories": [
+    "Formatters",
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "php",
+    "twig",
+    "snippets",
+    "prettier"
+  ],
+  "activationEvents": [
+    "onLanguage:twig"
+  ],
+  "main": "./extension/index.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "twig",
+        "aliases": [
+          "Twig (Html Template)",
+          "HTML (Twig)",
+          "Twig",
+          "twig"
+        ],
+        "extensions": [
+          ".twig",
+          ".html.twig"
+        ],
+        "configuration": "./src/languages/twig.configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "twig",
+        "scopeName": "text.html.twig",
+        "path": "./src/syntaxes/twig.tmLanguage",
+        "embeddedLanguages": {
+          "source.json": "json",
+          "source.css": "css",
+          "source.css.scss": "scss",
+          "source.js": "javascript",
+          "source.ts": "typescript"
+        }
+      }
+    ],
+    "snippets": [
+      {
+        "language": "twig",
+        "path": "./src/snippets/snippets.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "vsTwig",
+      "properties": {
+        "vs-twig.hover": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to enable/disable Twig hover."
+        },
+        "vs-twig.enableFormatting": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to enable/disable Twig formatting with Prettier."
+        },
+        "vs-twig.format.twigSingleQuote": {
+          "type": "boolean",
+          "default": true,
+          "description": "Values can be true or false. If true, single quotes will be used for string literals in Twig files."
+        },
+        "vs-twig.format.twigPrintWidth": {
+          "type": "integer",
+          "default": 80,
+          "description": "Because Twig files might have a lot of nesting, it can be useful to define a separate print width for Twig files. This can be done with this option. If it is not set, the standard printWidth option is used."
+        },
+        "vs-twig.format.twigAlwaysBreakObjects": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true, objects will always be wrapped/broken, even if they would fit on one line."
+        },
+        "vs-twig.format.twigFollowOfficialCodingStandards": {
+          "type": "boolean",
+          "default": true,
+          "description": "Follow the standards described in https://twig.symfony.com/doc/2.x/coding_standards.html exactly. If set to false, some slight deviations might occur, such as spaces around the filter | operator (s | upper instead of s|upper)."
+        },
+        "vs-twig.format.twigOutputEndblockName": {
+          "type": "boolean",
+          "default": false,
+          "description": "Choose whether to output the block name in {% endblock %} tags (e.g., {% endblock content %}) or not. The default is not to output it."
+        },
+        "vs-twig.format.twigMultiTags": {
+          "type": "array",
+          "default": [],
+          "description": "An array of coherent sequences of non-standard Twig tags that should be treated as belonging together."
+        }
+      }
+    }
+  },
+  "capabilities": {
+    "hoverProvider": "true"
+  },
+  "scripts": {
+    "compile": "rollup -c",
+    "watch": "rollup -c -w",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js",
+    "vscode:prepublish": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-json": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^12.12.7",
+    "@types/vscode": "^1.43.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.0.1",
+    "rollup": "^1.26.3",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.7.5",
+    "vscode-test": "^1.3.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "melody-idom": "^1.7.1",
+    "melody-runtime": "^1.7.1",
+    "prettier": "^2.0.2",
+    "prettier-plugin-twig-melody": "^0.4.2",
+    "vscode-languageserver": "^6.1.1"
+  }
+}

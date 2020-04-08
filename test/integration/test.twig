@@ -1,0 +1,32 @@
+<div class="swiper-container">
+  <div class="glide">
+    <div class="glide__track" data-glide-el="track">
+      <ul class="glide__slides">
+        {% for photo in gallery %}
+          <li class="glide__slide"><img src="{{ photo }}" alt="" /></li>
+        {% endfor %}
+      </ul>
+
+      <div data-glide-el="controls">
+        <button class="" data-glide-dir="<">
+          next
+        </button>
+
+        <button data-glide-dir=">">
+          prev
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% for item in items %}
+  <div>
+    <label for="test">
+      Test
+    </label>
+    <input id="test" />
+  </div>
+{% endfor %}
+
+{# test comment #}

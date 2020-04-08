@@ -1,0 +1,10 @@
+{
+  "[twig]": {
+    "editor.autoClosingQuotes": "always",
+    "editor.defaultFormatter": "spider-mane.vs-twig",
+    "editor.rulers": [80, 120]
+  },
+  "vs-twig.format.twigAlwaysBreakObjects": true,
+  "vs-twig.format.twigPrintWidth": 120,
+  "prettier.htmlWhitespaceSensitivity": "ignore"
+}
