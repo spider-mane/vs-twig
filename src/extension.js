@@ -9,12 +9,10 @@ import functionsHov from "./hover/functions.json";
 import prettierData from "./data/prettier.json";
 import extensionData from "./data/extension.json";
 
-const config = vscode.workspace.getConfiguration("vs-twig");
-
 /**
  *
  */
-function createHover(hovInfo, type) {
+async function createHover(hovInfo, type) {
   const example = "example" in hovInfo ? hovInfo.example : "";
   const description = "description" in hovInfo ? hovInfo.description : "";
 
@@ -27,18 +25,26 @@ function createHover(hovInfo, type) {
 /**
  *
  */
-function formatDocument(document, range) {
+async function formatDocument(document, range) {
+  const config = vscode.workspace.getConfiguration("twig.format");
   const prettierConfig = vscode.workspace.getConfiguration("prettier");
 
-  let formatOptions = config.format;
   let options = { plugins: [twig], parser: "melody" };
 
   prettierData.formatOptions.forEach((option) => {
     options[option] = prettierConfig[option];
   });
 
-  for (let [option, value] of Object.entries(formatOptions)) {
+  for (let [option, value] of Object.entries(config.rules)) {
     options[option] = value;
+  }
+
+  options.twigMelodyPlugins = [
+    "node_modules/prettier-plugin-twig-enhancements",
+  ];
+
+  if (true === config.enableCraftSupport) {
+    options.twigMelodyPlugins.push("node_modules/prettier-twig-craft-cms");
   }
 
   let output = prettier.format(document.getText(range), options);
@@ -50,6 +56,7 @@ function formatDocument(document, range) {
  *
  */
 function activate(context) {
+  const config = vscode.workspace.getConfiguration("twig");
   const active = vscode.window.activeTextEditor;
   if (!active || !active.document) return;
 
@@ -79,7 +86,7 @@ function activate(context) {
   }
 
   // formatting
-  if (config.enableFormatting === true) {
+  if (config.format.enable === true) {
     context.subscriptions.push(
       vscode.languages.registerDocumentFormattingEditProvider(type, {
         provideDocumentFormattingEdits(document) {

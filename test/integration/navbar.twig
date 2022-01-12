@@ -1,0 +1,36 @@
+{% set expanded = 'lg' %}
+
+<nav id="navbar" class="navbar navbar--site navbar-expand-{{ expanded }} absolute-top bg-transparent">
+	<div class="container text-white-90">
+		{# title #}
+		<a href="{{ site.url }}" class="navbar-brand entity-style">{{ site.title }}</a>
+
+		{# menu button #}
+		<button type="button" class="navbar-toggler text-white-90" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+			<i id="toggler-icon" class="fas fa-bars"></i>
+		</button>
+
+		<div class="offcanvas offcanvas-end bg-transparent-dark-90" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+			{# offcanvas title #}
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{ site.title }}</h5>
+				<button type="button" class="navbar-toggler text-reset text-white-90" data-bs-dismiss="offcanvas" aria-label="Close">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+
+			{# nav menu #}
+			<div id="navbar-menu" class="offcanvas-body justify-content-{{ expanded }}-end">
+				<ul class="navbar-nav entity-style h4 font-weight-normal">
+					{% for slug, title in navbar.menu %}
+						<li class="nav-item">
+							<a href="{{ slug | url }}" class="nav-link text-white-90 animate-child-hover">
+								<span class="d-block animated-child-fadeIn">{{ title }}</span>
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>

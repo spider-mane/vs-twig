@@ -6,6 +6,7 @@ export default {
     file: "extension/index.js",
     format: "cjs",
   },
+  external: ["vscode", "prettier", "prettier-plugin-twig-melody"],
   plugins: [
     json({
       exclude: ["node_modules/**"],

@@ -1,6 +1,6 @@
 {
-  "name": "twig-for-vscode",
-  "displayName": "Twig for VS Code",
+  "name": "vs-twig",
+  "displayName": "vsTwig",
   "description": "Snippets, Syntax Highlighting, Hover, and Formatting for Twig",
   "version": "0.1.0",
   "publisher": "spider-mane",
@@ -76,49 +76,119 @@
       }
     ],
     "configuration": {
-      "title": "Twig for VS Code",
+      "title": "vsTwig",
       "properties": {
-        "twig.hover": {
+        "vs-twig.hover": {
           "type": "boolean",
           "default": true,
           "description": "Whether to enable/disable Twig hover."
         },
-        "twig.format.enable": {
+        "vs-twig.enableFormatting": {
           "type": "boolean",
           "default": true,
           "description": "Whether to enable/disable Twig formatting with Prettier."
         },
-        "twig.format.enableCraftSupport": {
-          "type": "boolean",
-          "default": false,
-          "description": "Whether to enable support for Craft CMS tags."
-        },
-        "twig.format.rules.twigSingleQuote": {
-          "type": "boolean",
-          "default": true,
-          "description": "Values can be true or false. If true, single quotes will be used for string literals in Twig files."
-        },
-        "twig.format.rules.twigPrintWidth": {
+        "vs-twig.format.printWidth": {
           "type": "integer",
           "default": 120,
-          "description": "Because Twig files might have a lot of nesting, it can be useful to define a separate print width for Twig files. This can be done with this option. If it is not set, the standard printWidth option is used."
+          "description": ""
         },
-        "twig.format.rules.twigAlwaysBreakObjects": {
+        "vs-twig.format.tabWidth": {
+          "type": "intiger",
+          "default": 2,
+          "description": ""
+        },
+        "vs-twig.format.useTabs": {
+          "type": "boolean",
+          "default": false,
+          "description": ""
+        },
+        "vs-twig.format.semi": {
+          "type": "boolean",
+          "default": true,
+          "description": ""
+        },
+        "vs-twig.format.singleQuote": {
+          "type": "boolean",
+          "default": false,
+          "description": ""
+        },
+        "vs-twig.format.quoteProps": {
+          "type": "string",
+          "default": "as-needed",
+          "enum": [
+            "as-needed",
+            "consistent",
+            "preserve"
+          ],
+          "description": ""
+        },
+        "vs-twig.format.jsxSingleQuote": {
+          "type": "boolean",
+          "default": false,
+          "description": ""
+        },
+        "vs-twig.format.trailingComma": {
+          "type": "boolean",
+          "default": "es5",
+          "enum": [
+            "es5",
+            "none",
+            "all"
+          ],
+          "description": ""
+        },
+        "vs-twig.format.bracketSpacing": {
+          "type": "boolean",
+          "default": true,
+          "description": ""
+        },
+        "vs-twig.format.arrowParens": {
+          "type": "boolean",
+          "default": "always",
+          "enum": [
+            "always",
+            "avoid"
+          ],
+          "description": ""
+        },
+        "vs-twig.format.htmlWhitespaceSensitivity": {
+          "type": "boolean",
+          "default": "css",
+          "enum": [
+            "css",
+            "strict",
+            "ignore"
+          ],
+          "description": ""
+        },
+        "vs-twig.format.endOfLine": {
+          "type": "string",
+          "default": "lf",
+          "enum": [
+            "lf",
+            "crlf",
+            "cr",
+            "auto"
+          ],
+          "description": ""
+        },
+        "vs-twig.format.alwaysBreakObjects": {
           "type": "boolean",
           "default": false,
           "description": "If set to true, objects will always be wrapped/broken, even if they would fit on one line."
         },
-        "twig.format.rules.twigFollowOfficialCodingStandards": {
+        "vs-twig.format.followOfficialCodingStandards": {
           "type": "boolean",
           "default": true,
           "description": "Follow the standards described in https://twig.symfony.com/doc/2.x/coding_standards.html exactly. If set to false, some slight deviations might occur, such as spaces around the filter | operator (s | upper instead of s|upper)."
         },
-        "twig.format.rules.twigOutputEndblockName": {
+        "vs-twig.format.outputEndblockName": {
           "type": "boolean",
           "default": false,
           "description": "Choose whether to output the block name in {% endblock %} tags (e.g., {% endblock content %}) or not. The default is not to output it."
         },
-        "twig.format.rules.twigMultiTags": {
+        "vs-twig.format.multiTags": {
           "type": "array",
           "default": [],
           "description": "An array of coherent sequences of non-standard Twig tags that should be treated as belonging together."
@@ -160,9 +230,7 @@
     "melody-idom": "^1.7.1",
     "melody-runtime": "^1.7.1",
     "prettier": "^2.5.1",
-    "prettier-plugin-twig-enhancements": "^1.0.1",
     "prettier-plugin-twig-melody": "^0.4.6",
-    "prettier-twig-craft-cms": "^0.1.0",
     "vscode-languageserver": "^6.1.1"
   }
 }
